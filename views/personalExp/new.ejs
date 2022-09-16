@@ -1,0 +1,42 @@
+<% layout('layouts/boilerplate') %>
+
+
+    <div class="row">
+        <h3 class="table-heading">Add an Expense</h3>
+        <div class="col-6 offset-3">
+            <form action="/api/bills/createPersonalExp/<%= user._id %> " class="needs-validation" method="POST"
+                novalidate>
+                <div class="mb-3">
+                    <label class="form-label" for="bill_name">Name:</label>
+                    <input class="form-control" type="text" name="bill_name" id="bill_name" placeholder="Birthday Cake"
+                        required>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="category">Category</label>
+                    <select class="form-select form-select-sm" name="category" id="category"
+                        aria-label=".form-select-sm example" required>
+                        <option value="food" selected>Food</option>
+                        <option value="travel">Travel</option>
+                        <option value="clothing">Clothing</option>
+                        <option value="entertainment">Entertainment</option>
+                        <option value="health">Health</option>
+                        <option value="others">others</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="totalAmt">Total Expenditure(in Rupees)</label>
+                    <div class="input-group">
+                        <span class="input-group-text" id="totalAmt">&#8377;</span>
+                        <input type="text" name="totalAmt" class="form-control"
+                            aria-label="Amount (to the nearest Rupees)" placeholder="0.00" required>
+                        <span class="input-group-text">.00</span>
+                    </div>
+                </div>
+                <div class="mb-3 text-center">
+                    <button class="btn btn-success btn rounded-pill">OK! DONE</button>
+                </div>
+
+            </form>
+        </div>
+
+    </div>

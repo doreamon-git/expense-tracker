@@ -1,0 +1,49 @@
+<% layout('layouts/boilerplate') %>
+
+    <div class="d-grid gap-2 d-md-flex flex-md-row justify-content-md-end">
+        <a class="btn btn-primary me-md-2" type="button" href="/api/bills/createPersonalExp">Create Personal
+            Expenses</a>
+        <a class="btn btn-primary" type="button" href="/api/bills/createSharedExp">Create Shared Expenses</a>
+    </div>
+
+    <h3 class="table-heading mt-4">This Month</h3>
+    <div class="container mt-1 ms-2 px-2">
+        <div class="table-responsive">
+            <table class="table table-responsive table-borderless rwd-table">
+                <thead>
+                    <tr>
+                        <th scope="col" width="20%">Name</th>
+                        <th scope="col" width="20%">Date</th>
+                        <th scope="col" width="20%">Category</th>
+                        <th scope="col" class="text-end" width="20%"><span>Spend</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% let totalSpend=0; %>
+
+                        <% for(let data of data1){%>
+                            <tr>
+                                <td>
+                                    <%=data.bill_name%>
+                                </td>
+                                <td>
+                                    <%= (data.date).slice(0,10) %>
+                                </td>
+                                <td>
+                                    <%= data.category %>
+                                </td>
+                                <td class="text-end"><span class="fw-bolder">
+                                        <% totalSpend +=data.totalAmt %>
+                                            <%= data.totalAmt %>
+                                    </span> <i class="fa fa-ellipsis-h ms-2"></i></td>
+                            </tr>
+                            <% } %>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <h3 class="table-heading" style="text-align: right;"> Total:
+        <%= totalSpend %>
+    </h3>
